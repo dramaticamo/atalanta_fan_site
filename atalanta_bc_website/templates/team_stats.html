@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Serie A Standings</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      padding: 12px 30px;
+      background: white;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .navbar img {
+      height: 50px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.08);
+    }
+
+    .heading {
+      text-align: center;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    .heading h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .heading p {
+      font-size: 1.1rem;
+      color: #555;
+    }
+
+    .emoji-icon {
+      font-size: 2.2rem;
+      margin-bottom: 8px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    thead {
+      background-color: #0046ad;
+      color: white;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    tbody tr.highlight {
+      background-color: #d0f0ff;
+      font-weight: bold;
+      color: #0046ad;
+    }
+
+    td, th {
+      padding: 12px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+    <!-- Centered Atalanta Logo Above Title -->
+    <div class="heading text-center my-4">
+      <img src="{{ url_for('static', filename='images/atalanta_logo.svg') }}" alt="Atalanta Logo" style="width: 80px; margin-bottom: 10px;">
+      <h1 class="fw-bold">📊 Team Statistics 📊 </h1>
+      <p class="text-muted">Here you will find stats about Atalanta BC's performance.</p>
+    </div>
+
+    <h2 class="text-center mt-5 d-flex justify-content-center align-items-center gap-2">
+      <img src="{{ url_for('static', filename='images/serie_a_logo.png') }}" alt="Serie A Logo" style="width: 40px;">
+      <span class="fw-bold">Serie A Standings</span>
+      <img src="{{ url_for('static', filename='images/serie_a_logo.png') }}" alt="Serie A Logo" style="width: 40px;">
+    </h2>    
+
+    <table>
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Team</th>
+          <th>Matches</th>
+          <th>Win</th>
+          <th>Draw</th>
+          <th>Lose</th>
+          <th>+</th>
+          <th>-</th>
+          <th>GD (+/-)</th>
+          <th>Points</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td class="team-cell"><img src="{{ url_for('static', filename='images/inter.png') }}" alt="Inter" class="team-logo"><span class="team-name">Inter</span></td><td>29</td><td>19</td><td>7</td><td>3</td><td>65</td><td>27</td><td>+38</td><td>64</td></tr>
+        <tr><td>2</td><td class="team-cell"><img src="{{ url_for('static', filename='images/napoli.png') }}" alt="Napoli" class="team-logo"><span class="team-name">Napoli</span></td><td>29</td><td>18</td><td>7</td><td>4</td><td>45</td><td>23</td><td>+22</td><td>61</td></tr>
+        <tr class="highlight"><td>3</td><td class="team-cell"><img src="{{ url_for('static', filename='images/atalanta_wiki.png') }}" alt="Atalanta" class="team-logo no-glow"><span class="team-name">Atalanta</span></td><td>29</td><td>17</td><td>7</td><td>5</td><td>63</td><td>28</td><td>+35</td><td>58</td></tr>
+        <tr><td>4</td><td class="team-cell"><img src="{{ url_for('static', filename='images/bologna.png') }}" alt="Bologna" class="team-logo"><span class="team-name">Bologna</span></td><td>29</td><td>14</td><td>11</td><td>4</td><td>49</td><td>34</td><td>+15</td><td>53</td></tr>
+        <tr><td>5</td><td class="team-cell"><img src="{{ url_for('static', filename='images/juventus.png') }}" alt="Juventus" class="team-logo"><span class="team-name">Juventus</span></td><td>29</td><td>13</td><td>13</td><td>3</td><td>45</td><td>28</td><td>+17</td><td>52</td></tr>
+        <tr><td>6</td><td class="team-cell"><img src="{{ url_for('static', filename='images/lazio.png') }}" alt="Lazio" class="team-logo"><span class="team-name">Lazio</span></td><td>29</td><td>15</td><td>6</td><td>8</td><td>50</td><td>41</td><td>+9</td><td>51</td></tr>
+        <tr><td>7</td><td class="team-cell"><img src="{{ url_for('static', filename='images/roma.png') }}" alt="Roma" class="team-logo"><span class="team-name">Roma</span></td><td>29</td><td>14</td><td>7</td><td>8</td><td>44</td><td>30</td><td>+14</td><td>49</td></tr>
+        <tr><td>8</td><td class="team-cell"><img src="{{ url_for('static', filename='images/fiorentina.png') }}" alt="Fiorentina" class="team-logo"><span class="team-name">Fiorentina</span></td><td>29</td><td>14</td><td>6</td><td>9</td><td>46</td><td>30</td><td>+16</td><td>48</td></tr>
+        <tr><td>9</td><td class="team-cell"><img src="{{ url_for('static', filename='images/ac.png') }}" alt="Milan" class="team-logo"><span class="team-name">Milan</span></td><td>29</td><td>13</td><td>8</td><td>8</td><td>44</td><td>33</td><td>+11</td><td>47</td></tr>
+        <tr><td>10</td><td class="team-cell"><img src="{{ url_for('static', filename='images/udinese.svg') }}" alt="Udinese" class="team-logo"><span class="team-name">Udinese</span></td><td>29</td><td>11</td><td>7</td><td>11</td><td>35</td><td>39</td><td>-4</td><td>40</td></tr>
+        <tr><td>11</td><td class="team-cell"><img src="{{ url_for('static', filename='images/torino.svg') }}" alt="Torino" class="team-logo"><span class="team-name">Torino</span></td><td>29</td><td>9</td><td>11</td><td>9</td><td>34</td><td>34</td><td>0</td><td>38</td></tr>
+        <tr><td>12</td><td class="team-cell"><img src="{{ url_for('static', filename='images/genoa.png') }}" alt="Genoa" class="team-logo"><span class="team-name">Genoa</span></td><td>29</td><td>8</td><td>11</td><td>10</td><td>28</td><td>37</td><td>-9</td><td>35</td></tr>
+        <tr><td>13</td><td class="team-cell"><img src="{{ url_for('static', filename='images/como.png') }}" alt="Como" class="team-logo"><span class="team-name">Como</span></td><td>29</td><td>7</td><td>8</td><td>14</td><td>35</td><td>46</td><td>-11</td><td>29</td></tr>
+        <tr><td>14</td><td class="team-cell"><img src="{{ url_for('static', filename='images/verona.png') }}" alt="Hellas Verona" class="team-logo"><span class="team-name">Hellas Verona</span></td><td>29</td><td>9</td><td>2</td><td>18</td><td>29</td><td>58</td><td>-29</td><td>29</td></tr>
+        <tr><td>15</td><td class="team-cell"><img src="{{ url_for('static', filename='images/cagliari.png') }}" alt="Cagliari" class="team-logo"><span class="team-name">Cagliari</span></td><td>29</td><td>6</td><td>8</td><td>15</td><td>28</td><td>44</td><td>-16</td><td>26</td></tr>
+        <tr><td>16</td><td class="team-cell"><img src="{{ url_for('static', filename='images/lecce.png') }}" alt="Lecce" class="team-logo"><span class="team-name">Lecce</span></td><td>29</td><td>6</td><td>7</td><td>16</td><td>21</td><td>48</td><td>-27</td><td>25</td></tr>
+        <tr><td>17</td><td class="team-cell"><img src="{{ url_for('static', filename='images/parma.png') }}" alt="Parma" class="team-logo"><span class="team-name">Parma</span></td><td>29</td><td>5</td><td>10</td><td>14</td><td>35</td><td>49</td><td>-14</td><td>25</td></tr>
+        <tr><td>18</td><td class="team-cell"><img src="{{ url_for('static', filename='images/empoli.png') }}" alt="Empoli" class="team-logo"><span class="team-name">Empoli</span></td><td>29</td><td>4</td><td>10</td><td>15</td><td>23</td><td>46</td><td>-23</td><td>22</td></tr>
+        <tr><td>19</td><td class="team-cell"><img src="{{ url_for('static', filename='images/venezia.png') }}" alt="Venezia" class="team-logo"><span class="team-name">Venezia</span></td><td>29</td><td>3</td><td>11</td><td>15</td><td>24</td><td>49</td><td>-25</td><td>21</td></tr>
+        <tr><td>20</td><td class="team-cell"><img src="{{ url_for('static', filename='images/monza.png') }}" alt="Monza" class="team-logo"><span class="team-name">Monza</span></td><td>29</td><td>2</td><td>9</td><td>18</td><td>24</td><td>49</td><td>-25</td><td>15</td></tr>
+      </tbody>      
+    </table>    
+  </div>
+
+</body>
+</html>

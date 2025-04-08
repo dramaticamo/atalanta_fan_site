@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ player.name }} - Profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    {% include 'navbar.html' %}
+    
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Player Image and Position -->
+            <div class="col-md-4 text-center">
+                <img src="{{ url_for('static', filename='images/' ~ player.image) }}" class="img-fluid rounded-circle mb-3" width="200">
+                <h3>{{ player.name }}</h3>
+                <p class="text-muted">
+                    {% if player.position == "Goalkeeper" %}
+                        🧤 Goalkeeper
+                    {% elif player.position == "Defender" %}
+                        🛡️ Defender
+                    {% elif player.position == "Midfielder" %}
+                        🎯 Midfielder
+                    {% elif player.position == "Forward" %}
+                        ⚡ Forward
+                    {% elif player.position == "Coach" %}
+                        👔 Coach
+                    {% else %}
+                        {{ player.position }}
+                    {% endif %}
+                </p>
+            </div>
+
+            <!-- Player Info Section -->
+            <div class="col-md-8">
+                <h4>Player Info</h4>
+                <ul class="list-group">
+                    <li class="list-group-item"><strong>👤Full Name:</strong> {{ player.full_name }}</li>
+                    <li class="list-group-item"><strong>🎂Birthday:</strong> {{ player.birthday }}</li>
+                    <li class="list-group-item"><strong>🧠Role:</strong> {{ player.role }}</li>
+                    <li class="list-group-item"><strong>📏Height:</strong> {{ player.height }}</li>
+                    <li class="list-group-item"><strong>🌍 Nationality:</strong> {{ player.nationality }}</li>
+                    <li class="list-group-item"><strong>👕Shirt Number:</strong> {{ player.shirt_number }}</li>
+                    <li class="list-group-item"><strong>⚽ Goals:</strong> {{ player.goals }}</li>
+                    <li class="list-group-item"><strong>🎯 Assists:</strong> {{ player.assists }}</li>
+                    <li class="list-group-item"><strong>📅 Appearances:</strong> {{ player.appearances }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

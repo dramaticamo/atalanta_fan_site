@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Atalanta Players</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        .player-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.2s ease-in-out;
+            background-color: #fff;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .player-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .player-img {
+            height: 160px;
+            width: 160px;
+            object-fit: contain; /* 👈 avoids cutting off heads */
+            border-radius: 50%;
+            margin-bottom: 10px;
+            background-color: #f9f9f9;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    {% include 'navbar.html' %}
+
+    <div class="container mt-4">
+        <h2 class="text-center mb-4">👥 Meet the Squad</h2>
+    
+        <!-- Coach Section -->
+        <h3 class="text-start mt-5">👔 Coach</h3>
+        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4">
+            {% for player in players if player.position == "Coach" %}
+            <div class="col">
+                <div class="player-card h-100 d-flex flex-column justify-content-center">
+                    <a href="{{ url_for('player_detail', player_id=player.id) }}" style="text-decoration: none; color: inherit;">
+                        <img src="{{ url_for('static', filename='images/' ~ player.image) }}" alt="{{ player.name }}" class="player-img">
+                        <h5 class="mt-2">{{ player.name }}</h5>
+                    </a>
+                    <p class="text-muted">{{ emoji(player.position) }} {{ player.position }}</p>
+                </div>                
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Goalkeepers Section -->
+        <h3 class="text-start mt-5">🧤 Goalkeepers</h3>
+        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4">
+            {% for player in players if player.position == "Goalkeeper" %}
+            <div class="col">
+                <div class="player-card h-100 d-flex flex-column justify-content-center">
+                    <a href="{{ url_for('player_detail', player_id=player.id) }}" style="text-decoration: none; color: inherit;">
+                        <img src="{{ url_for('static', filename='images/' ~ player.image) }}" alt="{{ player.name }}" class="player-img">
+                        <h5 class="mt-2">{{ player.name }}</h5>
+                    </a>
+                    <p class="text-muted">{{ emoji(player.position) }} {{ player.position }}</p>
+                </div>                
+            </div>
+            {% endfor %}
+        </div>
+    
+        <!-- Defenders Section -->
+        <h3 class="text-start mt-5">🛡️ Defenders</h3>
+        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4">
+            {% for player in players if player.position == "Defender" %}
+            <div class="col">
+                <div class="player-card h-100 d-flex flex-column justify-content-center">
+                    <a href="{{ url_for('player_detail', player_id=player.id) }}" style="text-decoration: none; color: inherit;">
+                        <img src="{{ url_for('static', filename='images/' ~ player.image) }}" alt="{{ player.name }}" class="player-img">
+                        <h5 class="mt-2">{{ player.name }}</h5>
+                    </a>
+                    <p class="text-muted">{{ emoji(player.position) }} {{ player.position }}</p>
+                </div>                
+            </div>
+            {% endfor %}
+        </div>
+    
+        <!-- Midfielders Section -->
+        <h3 class="text-start mt-5">🎯 Midfielders</h3>
+        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4">
+            {% for player in players if player.position == "Midfielder" %}
+            <div class="col">
+                <div class="player-card h-100 d-flex flex-column justify-content-center">
+                    <a href="{{ url_for('player_detail', player_id=player.id) }}" style="text-decoration: none; color: inherit;">
+                        <img src="{{ url_for('static', filename='images/' ~ player.image) }}" alt="{{ player.name }}" class="player-img">
+                        <h5 class="mt-2">{{ player.name }}</h5>
+                    </a>
+                    <p class="text-muted">{{ emoji(player.position) }} {{ player.position }}</p>
+                </div>                
+            </div>
+            {% endfor %}
+        </div>
+    
+        <!-- Forwards Section -->
+        <h3 class="text-start mt-5">⚡ Forwards</h3>
+        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4">
+            {% for player in players if player.position == "Forward" %}
+            <div class="col">
+                <div class="player-card h-100 d-flex flex-column justify-content-center">
+                    <a href="{{ url_for('player_detail', player_id=player.id) }}" style="text-decoration: none; color: inherit;">
+                        <img src="{{ url_for('static', filename='images/' ~ player.image) }}" alt="{{ player.name }}" class="player-img">
+                        <h5 class="mt-2">{{ player.name }}</h5>
+                    </a>
+                    <p class="text-muted">{{ emoji(player.position) }} {{ player.position }}</p>
+                </div>                
+            </div>
+            {% endfor %}
+        </div>
+    </div>    
+</body>
+</html>
